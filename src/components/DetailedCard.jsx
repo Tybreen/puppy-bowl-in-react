@@ -1,4 +1,12 @@
-const DetailedCard = ({selectedPlayer, setSelectedPlayer, players}) => {
+import { useNavigate, useParams } from "react-router-dom";
+
+const DetailedCard = ({setNeedsUpdating, players}) => {
+
+  const navigate = useNavigate();
+
+  const {playerID} = useParams();
+  
+  const selectedPlayer = players.find((player) => player.id === Number(playerID));
 
   const findTeammates = () => {
     const teammates = players.filter((player) => selectedPlayer.teamId === player.teamId);
@@ -6,6 +14,8 @@ const DetailedCard = ({selectedPlayer, setSelectedPlayer, players}) => {
   }
 
   return (
+    selectedPlayer
+    ?
     <section id="selectedCard">
       <img id="cardImg" src={selectedPlayer.imageUrl} alt={selectedPlayer.name}/>
       <h2 id="cardName">{selectedPlayer.name}</h2>
@@ -16,8 +26,15 @@ const DetailedCard = ({selectedPlayer, setSelectedPlayer, players}) => {
       <ul>
         {findTeammates()}
       </ul>
-      <button id="cardBackButton" onClick={() => setSelectedPlayer(null)}>Back</button>
+      <button id="cardBackButton" onClick={() => {
+        setNeedsUpdating(true);
+        navigate("/");
+      }}>Back</button>
     </section>
+    :
+    <h2 className="backgroundText">Loading</h2>
   )
 }
 export default DetailedCard;
+
+//* <Link>to={`/`}></Link>

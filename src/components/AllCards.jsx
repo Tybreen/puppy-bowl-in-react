@@ -1,4 +1,8 @@
-const AllCards = ({players, fetchSinglePlayer, setNeedsUpdating, BASE_API_URL}) => {
+import { Link, useNavigate } from "react-router-dom";
+
+const AllCards = ({players, setNeedsUpdating, BASE_API_URL}) => {
+
+  const navigate = useNavigate();
 
   const deletePlayer = async (playerID) => {
 
@@ -22,7 +26,11 @@ const AllCards = ({players, fetchSinglePlayer, setNeedsUpdating, BASE_API_URL}) 
     
     players.map((player) => {
       return (
-        <section key={player.id} className="individualCard" onClick={(event) => fetchSinglePlayer(player.id, event)}>
+        <section key={player.id} className="individualCard" onClick={(event) => {
+          if(event.target.className !== `deleteButton`) {
+            navigate(`/${player.id}`);
+          }
+        }}>
           <img id="cardImg" src={player.imageUrl} alt={player.name}/>
           <h2 id="cardName">{player.name}</h2>
           <p id="cardId">#{player.id}</p>

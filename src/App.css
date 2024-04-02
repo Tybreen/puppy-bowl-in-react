@@ -7,7 +7,7 @@
   body {
     background-color: rgb(100, 100, 100);
   }
-  #title, label {
+  .backgroundText {
     color: white;
   }
 
@@ -30,6 +30,7 @@ form {
   justify-content: center;
   text-align: center;
   align-items: center;
+  margin: 20px;
 }
 form * {
   width: 50vw;
@@ -41,10 +42,14 @@ form > button {
   height: 50px;
 }
 
+#searchBar > input {
+  height: 30px;
+}
+
 .deleteButton {
   margin: 15px;
   width: 80%;
-  background-color: darkred;
+  background-color: rgb(200, 0, 0);
   border-style: solid;
 }
 .deleteButton:hover {

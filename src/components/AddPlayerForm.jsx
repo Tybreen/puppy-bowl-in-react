@@ -35,15 +35,15 @@ const AddPlayerForm = ({BASE_API_URL, setNeedsUpdating}) => {
 
   return (
 
-    <form onSubmit={handleSubmit}>
+    <form id="AddPlayerForm" onSubmit={handleSubmit}>
       
-      <label>Puppy's name:</label>
+      <label className="backgroundText">Puppy's name:</label>
       <input type="text" value={nameInput} placeholder="Scruffy" onChange={(e) => setNameInput(e.target.value)} required/>
 
-      <label>Puppy's breed:</label>
+      <label className="backgroundText">Puppy's breed:</label>
       <input type="text" value={breedInput} placeholder="German Shepherd" onChange={(e) => setBreedInput(e.target.value)}/>
       
-      <label>Puppy's image url:</label>
+      <label className="backgroundText">Puppy's image url:</label>
       <input type="text" value={imageUrlInput} onChange={(e) => setImageUrlInput(e.target.value)}/>
 
       <button type="submit">Submit</button>
