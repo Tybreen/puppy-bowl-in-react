@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Times New Roman", Times, serif;
 }
 @media (prefers-color-scheme: dark) {
   body {
@@ -10,7 +11,6 @@
   .backgroundText {
     color: white;
   }
-
 }
 #title {
   text-align: center;
@@ -18,10 +18,26 @@
   margin-bottom: 30px;
 }
 
-#allCardsBody, #detailedCardBody {
+#allCardsBody,
+#detailedCardBody {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+.textCenter {
+  text-align: center;
+}
+#AddPlayerForm {
+  background-color: gray;
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 10px;
+  border-color: burlywood;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 form {
@@ -32,9 +48,13 @@ form {
   align-items: center;
   margin: 20px;
 }
+
+form > section {
+  margin-top: 20px;
+}
+
 form * {
   width: 50vw;
-  margin: 2px;
 }
 
 form > button {
@@ -42,8 +62,17 @@ form > button {
   height: 50px;
 }
 
+#inFieldCheckbox,
+#inFieldCheckbox * {
+  width: auto;
+}
+
 #searchBar > input {
   height: 30px;
+}
+
+#searchBar > label {
+  font-size: 1.5em;
 }
 
 .deleteButton {
@@ -55,7 +84,7 @@ form > button {
 .deleteButton:hover {
   background-color: red;
 }
-  
+
 h3 {
   margin: 10px;
 }
@@ -69,7 +98,7 @@ ul {
   list-style-type: none;
 }
 
-section {
+.card {
   text-align: center;
   background-color: burlywood;
   border-radius: 10px;
@@ -84,8 +113,7 @@ section {
   align-items: center;
   margin: 10px;
   width: 250px;
-  cursor: pointer;
-  transition: all .25s;
+  transition: all 0.25s;
 }
 
 .individualCard > img {
@@ -100,19 +128,20 @@ section {
 
 /* Selected Card */
 
-#selectedCard {
+.selectedCard {
   align-items: center;
   width: 80vw;
+  height: 85%;
+  margin-bottom: 50px;
 }
 
-#selectedCard > img {
+.selectedCard > img {
   width: 80%;
   margin: 20px;
 }
 
-#selectedCard > button {
+.selectedCard > button {
   margin: 10px 0px;
   width: 60%;
   height: 50px;
-  cursor: pointer;
 }
