@@ -13,8 +13,7 @@ const AllCards = ({ players, setNeedsUpdating, BASE_API_URL }) => {
         const response = await fetch(`${BASE_API_URL}/players/${playerID}`, { method: `DELETE` });
         const json = await response.json();
 
-        if (json.success) alert(`${playerName} was deleted.`);
-        else alert(`Something went wrong`);
+        if (!json.success) alert(`Something went wrong`);
 
         setNeedsUpdating(true);
       } catch (error) {
@@ -30,7 +29,6 @@ const AllCards = ({ players, setNeedsUpdating, BASE_API_URL }) => {
         className="card individualCard"
         onClick={(event) => {
           if (!event.target.className.includes(`deleteButton`)) {
-            console.log(!event.target.className.includes(`deleteButton`));
             navigate(`/${player.id}`);
           }
         }}

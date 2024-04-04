@@ -65,14 +65,7 @@ const AddPlayerForm = ({ BASE_API_URL, setNeedsUpdating }) => {
 
       <section id="inFieldCheckbox">
         <label className="backgroundText">In the field: </label>
-        <input
-          type="checkbox"
-          value={inTheFieldInput}
-          onChange={(e) => {
-            if (inTheFieldInput) setInTheFieldInput(false);
-            else setInTheFieldInput(true);
-          }}
-        />
+        <input type="checkbox" value={inTheFieldInput} onChange={(e) => setInTheFieldInput(!inTheFieldInput)} />
       </section>
 
       <section>
@@ -81,7 +74,7 @@ const AddPlayerForm = ({ BASE_API_URL, setNeedsUpdating }) => {
       </section>
 
       <button className="pointer" type="submit">
-        Submit
+        Add your puppy!!!
       </button>
     </form>
   );

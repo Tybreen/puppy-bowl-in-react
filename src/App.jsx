@@ -13,6 +13,7 @@ function App() {
   const [players, setPlayers] = useState([]);
   const [displayPlayers, setDisplayPlayers] = useState([]);
   const [needsUpdating, setNeedsUpdating] = useState(true);
+  const [fetchSuccess, setFetchSuccess] = useState(null);
 
   useEffect(() => {
     if (needsUpdating) {
@@ -25,10 +26,13 @@ function App() {
     try {
       const response = await fetch(`${BASE_API_URL}/players`);
       const json = await response.json();
+
       setPlayers(json.data.players);
       setDisplayPlayers(json.data.players);
+      setFetchSuccess(json.success);
     } catch (error) {
       console.error(`Error occurred!\n----------------\n`, error);
+      setFetchSuccess(false);
     }
   };
 
@@ -49,12 +53,19 @@ function App() {
                 <AddPlayerForm BASE_API_URL={BASE_API_URL} setNeedsUpdating={setNeedsUpdating} />
 
                 <SearchBar players={players} setDisplayPlayers={setDisplayPlayers} />
+
                 {displayPlayers.length ? (
                   <div id="allCardsBody">
                     <AllCards players={displayPlayers} setNeedsUpdating={setNeedsUpdating} BASE_API_URL={BASE_API_URL} />
                   </div>
-                ) : (
+                ) : players.length ? (
                   <h2 className="backgroundText textCenter">Sorry. Nothing matches your search.</h2>
+                ) : fetchSuccess === true ? (
+                  <h2 className="backgroundText textCenter">No puppys... Create one!</h2>
+                ) : fetchSuccess === false ? (
+                  <h2 className="backgroundText textCenter">Failed! Sorry, please try again later.</h2>
+                ) : (
+                  <h2 className="backgroundText textCenter">Loading...</h2>
                 )}
               </>
             }
